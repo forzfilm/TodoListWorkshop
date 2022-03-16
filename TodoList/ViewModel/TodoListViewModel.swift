@@ -9,6 +9,8 @@ import Foundation
 
 protocol TodoListViewModelInputs {
     func addItem(todoModel: TodoModel)
+    func updateItem(index: Int)
+    func deleteItem(index: Int)
 }
 
 protocol TodoListViewModelOutputs {
@@ -27,6 +29,14 @@ extension TodoListViewModel: TodoListViewModelInputs {
 
     func addItem(todoModel: TodoModel) {
         itemList.append(todoModel)
+    }
+
+    func updateItem(index: Int) {
+        itemList[index].isChecked = !itemList[index].isChecked
+    }
+
+    func deleteItem(index: Int) {
+        itemList.remove(at: index)
     }
 }
 
