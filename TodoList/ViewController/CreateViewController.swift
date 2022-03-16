@@ -15,14 +15,13 @@ class CreateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     // MARK: - User Interaction
 
     @IBAction func saveButtonClicked(_ sender: UIButton) {
-        onSaved(todoTextField.text ?? "")
+        guard let text = todoTextField.text, !text.isEmpty else { return }
+        onSaved(text)
         dismiss(animated: true)
     }
 
