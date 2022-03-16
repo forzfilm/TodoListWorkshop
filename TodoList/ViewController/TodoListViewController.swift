@@ -42,6 +42,17 @@ extension TodoListViewController: UITableViewDelegate {
         tableView.reloadData()
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            viewModel.inputs.deleteItem(index: indexPath.row)
+            tableView.reloadData()
+        }
+    }
+
 }
 
 extension TodoListViewController: UITableViewDataSource {
